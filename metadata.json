@@ -1,0 +1,6 @@
+{
+  "name": "Speech Reader",
+  "description": "A responsive, client-side Progressive Web App (PWA) to read aloud text files, PDFs, and web pages with customizable voices and speeds, working across Windows, iOS, and Android.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
