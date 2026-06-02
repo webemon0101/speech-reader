@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/speech-reader/', // 👈 この行を追加（末尾のコンマを忘れずに！）
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
