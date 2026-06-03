@@ -212,9 +212,15 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-900 pb-28 md:pb-24">
+    /* ✨ 変更点①：
+       min-h-screen を「h-dvh flex flex-col overflow-hidden」に変更
+       スマホのツールバーの変動に高さを合わせ、外側全体のガタガタしたスクロールを禁止します
+    */
+    <div className="h-dvh flex flex-col overflow-hidden bg-stone-50 text-stone-900">
+      
       {/* Upper Navigation Bar */}
-      <header className="sticky top-0 z-40 bg-stone-50/90 backdrop-blur-md border-b border-stone-200/80 px-4 py-3 sm:px-6">
+      {/* ✨ 変更点②：sticky を「flex-none」に変更して、上部にガチッと固定します */}
+      <header className="flex-none bg-stone-50 border-b border-stone-200/80 px-4 py-3 sm:px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2.5">
             <div className="bg-stone-900 p-2 rounded-xl text-stone-100 shadow-sm flex items-center justify-center">
@@ -238,7 +244,11 @@ export default function App() {
       </header>
 
       {/* Primary Layout Engine */}
-      <main className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:py-8">
+      {/* ✨ 変更点③：
+         max-w-7xl などの幅は維持したまま「flex-1 overflow-y-auto」を指定！
+         これによって、狭いスマホ画面でもプレイヤーと衝突せず、このエリア内「だけ」がスクロールするようになります
+      */}
+      <main className="flex-1 overflow-y-auto max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           
           {/* Left panel layout column: Controller widgets and Import */}
@@ -324,7 +334,11 @@ export default function App() {
       </main>
 
       {/* Premium Fully Sticky Audio Player HUD for both platforms */}
-      <footer className="fixed bottom-0 left-0 right-0 z-50 bg-stone-950/90 backdrop-blur-md border-t border-stone-800/80 px-4 py-4 sm:px-6">
+      {/* ✨ 変更点④：
+         不透明度を 90%(/90) から「100%不透明の bg-stone-950」にし、
+         さらに z-50 を確実に効かせるために「flex-none」で配置
+      */}
+      <footer className="flex-none w-full bg-stone-950 border-t border-stone-800/80 px-4 py-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <PlaybackControls 
             state={playbackState} 

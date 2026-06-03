@@ -7,13 +7,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="theme-color" content="#1c1917" />
     <title>Speech Reader - 音声読み上げリーダー</title>
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-    <link rel="apple-touch-icon" href="/icon.svg" />
+    <!-- 👇 静的ファイルのパスを「/」から「./」に修正しました -->
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <link rel="apple-touch-icon" href="./icon.svg" />
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
+          // 👇 サービスワーカーの読み込みパスも「./sw.js」に修正しました
+          navigator.serviceWorker.register('./sw.js')
             .then(reg => console.log('PWA Service Worker registered at:', reg.scope))
             .catch(err => console.error('PWA Service Worker registration failed:', err));
         });
@@ -22,7 +24,7 @@
   </head>
   <body class="bg-stone-50 text-stone-900 select-none antialiased">
     <div id="root"></div>
+    <!-- ⚠️ ここはViteが自動変換するため「/src/main.tsx」のままで100%大丈夫です -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
