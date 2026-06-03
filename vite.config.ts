@@ -29,5 +29,5 @@ export default defineConfig({
       }
     }) // 👈 追加
   ],
-  base: './',
+  base: '/speech-reader/',
 })
