@@ -1,9 +1,9 @@
 const CACHE_NAME = 'speech-reader-cache-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icon.svg',
+  '/speech-reader/',
+  '/speech-reader/index.html',
+  '/speech-reader/manifest.json',
+  '/speech-reader/icon.svg',
 ];
 
 self.addEventListener('install', (event) => {
@@ -36,7 +36,6 @@ self.addEventListener('fetch', (event) => {
         return cachedResponse;
       }
       return fetch(event.request).then((response) => {
-        // Cache static js, css, and svgs on the fly
         if (response.status === 200 && (
           url.pathname.endsWith('.js') || 
           url.pathname.endsWith('.css') || 
@@ -50,7 +49,7 @@ self.addEventListener('fetch', (event) => {
         return response;
       }).catch(() => {
         if (event.request.mode === 'navigate') {
-          return caches.match('/index.html');
+          return caches.match('/speech-reader/index.html');
         }
       });
     })
